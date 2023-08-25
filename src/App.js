@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { Layout } from "antd";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { Layout, Space, Typography } from "antd";
+import { CryptoDetails, Cryptocurrencies, Exchanges, HomePage, Navbar, New } from "./components";
 function App() {
   return (
     <div className="App">
@@ -11,32 +11,35 @@ function App() {
       <Layout>
         <div>
         <Routes>
-        <Route exact path="/" >
-        <Homepage/>
-        </Route>
+        <Route exact path="/" element={<HomePage/>} />
+        
 
-        <Route exact path="/cryptocurrencies" >
-        <Cryptocurrencies/>
-        </Route>
+        <Route exact path="/cryptocurrencies" element={<Cryptocurrencies/>} />
+       
 
-        <Route exact path="/exchanges" >
-        <Exchanges/>
-        </Route>
+        <Route exact path="/exchanges" element={<Exchanges/>} />
+   
 
-        <Route exact path="/news" >
-        <News/>
-        </Route>
-        <Route exact path="/crytpdetails" >
-        <CryptoDetails/>
-        </Route>
-
-
+        <Route exact path="/news" element={<New/>} />
+  
+        <Route exact path="/crypto/:id" element={<CryptoDetails/>} />
+    
         </Routes>
         </div>
       </Layout>
       </div>
       <div className="footer">
+    
+      <Typography.Title level={5} style={{alignItems:'center',color:'white'}} >
+        Cryptoverse <br/>
+        All right reserved
 
+        <Space>
+          <NavLink to='/'>homepage</NavLink>
+          <NavLink to='/exchanges'>Exchanges</NavLink>
+          <NavLink to='/news'>news</NavLink>
+        </Space>
+      </Typography.Title>
       </div>
     </div>
   );
