@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { Layout, Space, Typography } from "antd";
 import { CryptoDetails, Cryptocurrencies, Exchanges, HomePage, Navbar, New } from "./components";
+import './App.css'
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <div className="navbar">
       <Navbar/>
       </div>
       <div className="main">
       <Layout>
-        <div>
+        <div className="routes">
         <Routes>
         <Route exact path="/" element={<HomePage/>} />
         
@@ -27,19 +28,19 @@ function App() {
         </Routes>
         </div>
       </Layout>
-      </div>
       <div className="footer">
     
       <Typography.Title level={5} style={{alignItems:'center',color:'white'}} >
         Cryptoverse <br/>
         All right reserved
+      </Typography.Title>
 
         <Space>
           <NavLink to='/'>homepage</NavLink>
           <NavLink to='/exchanges'>Exchanges</NavLink>
           <NavLink to='/news'>news</NavLink>
         </Space>
-      </Typography.Title>
+      </div>
       </div>
     </div>
   );
