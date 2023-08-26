@@ -7,8 +7,8 @@ import New from './New';
 import Cryptocurrencies from './Cryptocurrencies';
 const HomePage = () => {
 
-  const {data,isFetching} = useGetCryptoQuery()
-  console.log(data);
+  const {data,isFetching} = useGetCryptoQuery(10)
+ 
 
   const dataCoins = data?.data?.stats
 
@@ -32,17 +32,17 @@ const HomePage = () => {
      <NavLink to='/cryptocurrencies'>show more</NavLink>
     </Typography.Title>
    </div>
-   <Cryptocurrencies/>
+   <Cryptocurrencies simplified={true}/>
 
    <div className='home-heading-container'>
     <Typography.Title level={2} className='home-title' >
-      top 10 cryptocurrencies in the world
+      Latest crypto news
     </Typography.Title>
     <Typography.Title level={3} className='show-more'>
      <NavLink to='/news'>show more</NavLink>
     </Typography.Title>
    </div>
-   <New/>
+   <New />
    </>
   )
 }
