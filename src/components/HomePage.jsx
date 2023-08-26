@@ -1,10 +1,16 @@
 import { Col, Row, Statistic, Typography } from 'antd'
 import React from 'react'
+import millify from "millify";
 import { useGetCryptoQuery } from './Services/data'
+import { NavLink } from 'react-router-dom';
+import New from './New';
+import Cryptocurrencies from './Cryptocurrencies';
 const HomePage = () => {
 
   const {data,isFetching} = useGetCryptoQuery()
   console.log(data);
+
+  const dataCoins = data?.data?.stats
 
   return (
    <>
@@ -12,12 +18,31 @@ const HomePage = () => {
     Global Crypto State
    </Typography.Title>
    <Row>
-   <Col span={12} ><Statistic title="Total Cryptocurrency" value='5'/></Col>
-   <Col span={12} ><Statistic title="Total Exchanges" value='5'/></Col>
-   <Col span={12} ><Statistic title="Total Market Cap" value='5'/></Col>
-   <Col span={12} ><Statistic title="Total 24 volume" value='5'/></Col>
-   <Col span={12} ><Statistic title="Total CryptoCurrencties" value='5'/></Col>
+   <Col span={12} ><Statistic title="Total Cryptocurrency" value={dataCoins?.total}/></Col>
+   <Col span={12} ><Statistic title="Total Exchanges" value={dataCoins?.totalExchanges}/></Col>
+   <Col span={12} ><Statistic title="Total Market Cap" value={millify(dataCoins?.totalMarketCap)}/></Col>
+   <Col span={12} ><Statistic title="Total 24 volume" value={millify(dataCoins?.total24hVolume)}/></Col>
+   <Col span={12} ><Statistic title="Total CryptoCurrencties" value={millify(dataCoins?.totalMarkets)}/></Col>
    </Row>
+   <div className='home-heading-container'>
+    <Typography.Title level={2} className='home-title' >
+      top 10 cryptocurrencies in the world
+    </Typography.Title>
+    <Typography.Title level={3} className='show-more'>
+     <NavLink to='/cryptocurrencies'>show more</NavLink>
+    </Typography.Title>
+   </div>
+   <Cryptocurrencies/>
+
+   <div className='home-heading-container'>
+    <Typography.Title level={2} className='home-title' >
+      top 10 cryptocurrencies in the world
+    </Typography.Title>
+    <Typography.Title level={3} className='show-more'>
+     <NavLink to='/news'>show more</NavLink>
+    </Typography.Title>
+   </div>
+   <New/>
    </>
   )
 }
