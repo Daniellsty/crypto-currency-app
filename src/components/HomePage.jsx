@@ -1,7 +1,11 @@
 import { Col, Row, Statistic, Typography } from 'antd'
 import React from 'react'
-
+import { useGetCryptoQuery } from './Services/data'
 const HomePage = () => {
+
+  const {data,isFetching} = useGetCryptoQuery()
+  console.log(data);
+
   return (
    <>
    <Typography.Title level={2} className='heading'>
