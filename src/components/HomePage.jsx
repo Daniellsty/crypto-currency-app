@@ -42,7 +42,7 @@ const HomePage = () => {
      <NavLink to='/news'>show more</NavLink>
     </Typography.Title>
    </div>
-   <New />
+   <New simplified={true}/>
    </>
   )
 }

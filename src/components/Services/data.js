@@ -20,4 +20,4 @@ export const cryptoApi = createApi({
       }),
     })
 
-    export const {useGetCryptoQuery} = cryptoApi
+export const {useGetCryptoQuery} = cryptoApi
