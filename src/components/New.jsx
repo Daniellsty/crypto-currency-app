@@ -1,17 +1,54 @@
 import React, { useState } from 'react'
 import { useGetCryptoNewsQuery } from './Services/cryptoNewsApi'
-import { Avatar, Card, Col, Row, Typography  } from 'antd';
+import { Avatar, Card, Col, Row, Select, Typography  } from 'antd';
 import moment from 'moment/moment';
+import { useGetCryptoQuery } from './Services/data';
+import { Option } from 'antd/es/mentions';
+
+
 
 const New = ({simplified}) => {
 
   const demoImage = 'https://i.ibb.co/Z11pcGG/cryptocurrency.png'
 
-  const {data} = useGetCryptoNewsQuery({newsCategory:"Cryptocurrency",count:simplified ? 6 : 12})
-  console.log(data);
+  const [newsCategory,setNewsCategory] = useState('Cryptocurrency')
+  const {data :cryptoNew } = useGetCryptoNewsQuery({newsCategory,count:simplified ? 6 : 12})
+  const {data} = useGetCryptoQuery(100)
+
+
   return (
+
+
+
+
+
    <Row gutter={[24,24]} >
-    {data?.value.map((item,i)=>(
+
+    {!simplified && 
+    
+    <Col span={24} >
+    <Select
+    showSearch
+    className='select-news'
+    placeholder="select a crypto"
+    optionFilterProp='children'
+    onChange={(value)=> setNewsCategory(value) }
+    filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) > 0  }
+
+      >
+
+        <Option value='Cryptocurrency'>Cryptocurrency</Option>
+        {data?.data?.coins.map((item)=> <Option value={item.name}>{item.name}</Option> )}
+      </Select>
+     
+        
+    </Col>
+    
+    }
+  
+
+
+    {cryptoNew?.value.map((item,i)=>(
 
       <Col xs={24} sm={12} lg={8} key={i} >
       
