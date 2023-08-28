@@ -8,7 +8,7 @@ const baseAPiUrlHeaderNews = {
 
 
 
- const baseUrlNews = 'https://bing-news-search1.p.rapidapi.com'
+ const baseUrlNews ='https://bing-news-search1.p.rapidapi.com'
 
  const createRequest =(url)=> ({url,headers:baseAPiUrlHeaderNews})
 
