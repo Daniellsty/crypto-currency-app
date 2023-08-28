@@ -9,6 +9,7 @@ import { useGetCryptoDetailQuery, useGetCryptoHistoryQuery } from "../Services/d
 import { useState } from 'react';
 import { Option } from 'antd/es/mentions';
 import LineChart from './LineChart';
+import Loader from './Loader';
 
 const CryptoDetails = () => {
 
@@ -39,7 +40,7 @@ const CryptoDetails = () => {
   ];
 
 
-  if (isFetching) return <h1>loading...</h1>;
+  if (isFetching) return <Loader/>;
 
 
 

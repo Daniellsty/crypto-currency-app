@@ -4,6 +4,7 @@ import millify from "millify";
 import { NavLink } from "react-router-dom";
 import Input from "antd/es/input/Input";
 import { useGetCryptoQuery } from "../Services/data";
+import Loader from "./Loader";
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data, isFetching } = useGetCryptoQuery(count);
@@ -18,7 +19,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCrypto(filtered);
   }, [searchTerm, data]);
 
-  if (isFetching) return <h1>loading...</h1>;
+  if (isFetching) return <Loader/>;
 
   return (
     <div>

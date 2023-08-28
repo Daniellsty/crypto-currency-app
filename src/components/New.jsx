@@ -4,6 +4,7 @@ import { Avatar, Card, Col, Row, Select, Typography } from "antd";
 import moment from "moment/moment";
 import { useGetCryptoQuery } from "../Services/data";
 import { Option } from "antd/es/mentions";
+import Loader from "./Loader";
 
 const New = ({ simplified }) => {
   const demoImage = "https://i.ibb.co/Z11pcGG/cryptocurrency.png";
@@ -13,7 +14,9 @@ const New = ({ simplified }) => {
     newsCategory,
     count: simplified ? 6 : 12,
   });
-  const { data } = useGetCryptoQuery(100);
+  const { data ,isFetching} = useGetCryptoQuery(100);
+
+  if(isFetching) return <Loader/>
 
   return (
     <Row gutter={[24, 24]}>
