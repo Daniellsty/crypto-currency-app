@@ -249,7 +249,8 @@ a:hover{
 
 .link-name{
     text-transform: capitalize;
-    font-size: 1rem;
+    font-weight: bold;
+    font-size:5px;
 }
 
 .coin-link a{

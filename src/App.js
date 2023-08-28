@@ -23,7 +23,7 @@ function App() {
 
         <Route exact path="/news" element={<New/>} />
   
-        <Route exact path="/crypto/:id" element={<CryptoDetails/>} />
+        <Route exact path="/crypto/:coinId" element={<CryptoDetails/>} />
     
         </Routes>
         </div>
